@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Grid",
+"language": "GDScript",
+"path": "res://Scripts/grid.gd"
+} ]
+_global_script_class_icons={
+"Grid": ""
+}
+
 [application]
 
 config/name="Gomoku"
