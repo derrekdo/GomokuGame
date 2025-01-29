@@ -1,7 +1,7 @@
 class_name Grid
 extends Resource
 
-export var grid_size := Vector2(24,24)
+export var grid_size := Vector2(16, 16)
 export var cell_size := Vector2(128,128)
 
 var cell_center = cell_size / 2
