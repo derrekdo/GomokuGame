@@ -1,11 +1,12 @@
 extends Node2D
+
 export var grid: Resource
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal click
+
 onready var board = $board
 onready var camera = $Camera2D
+
 func _ready():
 	# 
 	var viewport_size = get_viewport().size # [x, y]
@@ -21,6 +22,11 @@ func _ready():
 	camera.set_zoom(level_size / viewport_size)
 	
 func _input(event):
-	if event is InputEventMouseButton:
-		var tile_pos = board.map_to_world(board.world_to_map(board.make_input_local(event).position))
-		print(grid.grid_coords(tile_pos))
+#	if event is InputEventMouseButton:
+#		var tile_pos = board.map_to_world(board.world_to_map(board.make_input_local(event).position))
+#		print(grid.grid_coords(tile_pos))
+#
+	if event.is_action_pressed("click"):
+		var cell = board.world_to_map(board.make_input_local(event).position)
+		var tile_pos = board.map_to_world(cell)
+		emit_signal("click", cell, tile_pos, grid.cell_center)
